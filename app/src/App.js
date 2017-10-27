@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import './App.css';
+import router from './router.js';
+import Header from './components/Header/Header';
 
-class App extends Component {
+export default class App extends Component {
+
   render() {
     return (
       <div>
-
-
+        {router}
+        <Header/>
       </div>
     );
   }
 }
-
-export default App;
