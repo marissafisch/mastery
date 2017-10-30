@@ -26,6 +26,9 @@ class Workouts extends Component {
         })
         return (
             <div className="workout_viewer">
+                <div className="view-workouts">
+                        <h1>View Workouts</h1>
+                    </div>
                 <div className="workout-container">
                     {workoutListDisplay}
                     <button onClick={() => this.addWorkout('workout')} className="add_workout_button">ADD WORKOUT</button>
