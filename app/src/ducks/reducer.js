@@ -1,16 +1,14 @@
 import axios from 'axios';
 
 const initialState = {
-    user: {user_id:1},
-    workout_id: 0,
     workoutDate: null,
     workoutDescription: '',
     caloriesBurned: '',
     workoutList: [],
+    workout_id: 1,
   
 }
 //ACTION NAMES//
-const UPDATE_WORKOUT_ID = "UPDATE_WORKOUT_ID";
 const UPDATE_WORKOUT_DATE = "UPDATE_WORKOUT_DATE";
 const UPDATE_WORKOUT_DESCRIPTION = "UPDATE_WORKOUT_DESCRIPTION";
 const UPDATE_CALORIES_BURNED = "UPDATE_CALORIES_BURNED";
@@ -22,8 +20,6 @@ const DELETE_WORKOUT = "DELETE_WORKOUT";
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case UPDATE_WORKOUT_ID:
-            return Object.assign({}, state, { workout_id: action.payload })
         case UPDATE_WORKOUT_DATE:
             return Object.assign({}, state, { workoutDate: action.payload })
         case UPDATE_WORKOUT_DESCRIPTION:
@@ -40,13 +36,6 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { workoutList: action.payload })
         default:
             return state
-    }
-}
-
-export function updateWorkoutId(workout_id) {
-    return {
-        type: UPDATE_WORKOUT_ID,
-        payload: workout_id
     }
 }
 
@@ -72,10 +61,10 @@ export function updateCaloriesBurned(caloriesBurned) {
 }
 
 //WORKOUTS//
-export function getAllWorkouts(user_id) {
+export function getAllWorkouts() {
     return {
         type: GET_ALL_WORKOUTS,
-        payload: axios.get(`/api/workouts/get_all/${user_id}`).then(response => {
+        payload: axios.get(`http://localhost:3030/workouts/getAll`).then(response => {
             return response.data
         })
     }
@@ -83,7 +72,7 @@ export function getAllWorkouts(user_id) {
 export function addWorkout(obj) {
     return {
         type: ADD_WORKOUT,
-        payload: axios.post(`/api/workouts/add`, obj).then(response => {
+        payload: axios.post(`http://localhost:3030/workouts/add`, obj).then(response => {
             return response.data
         })
     }
@@ -92,16 +81,16 @@ export function addWorkout(obj) {
 export function editWorkout(obj) {
     return {
         type: EDIT_WORKOUT,
-        payload: axios.patch('/api/workouts/edit', obj).then(response => {
+        payload: axios.patch(`http://localhost:3030/workouts/edit`, obj).then(response => {
             return response.data
         })
     }
 }
 
-export function deleteWorkout(workout_id, user_id) {
+export function deleteWorkout(workout_id) {
     return {
         type: DELETE_WORKOUT,
-        payload: axios.delete(`/api/workouts/delete/${workout_id}/${user_id}`).then(response => {
+        payload: axios.delete(`http://localhost:3030/workouts/delete/${workout_id}`).then(response => {
             return response.data
         })
     }

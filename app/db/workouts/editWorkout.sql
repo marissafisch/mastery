@@ -1,9 +1,4 @@
 UPDATE workouts
 SET workout_date = $1, description = $2, calories_burned = $3
-WHERE workout_id = $4 AND user_id = $5;
-
-SELECT *
-FROM workouts
-WHERE user_id = $5
-ORDER BY workout_date;
-
+WHERE workout_id = $4
+RETURNING *;

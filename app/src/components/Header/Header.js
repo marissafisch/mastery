@@ -1,47 +1,44 @@
 import React, { Component } from 'react';
-import './Header.css';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
 
+class Header extends Component {
+    constructor() {
+        super()
 
+        this.state = {
+            user: []
+        }
+    }
 
-export default class Header extends Component {
+    componentDidMount() {
+        this.getUserInfo(1)
+    }
 
-	render() {
-		return (
-			<div id="header">
-				<div className="header-container">
-					
-					
-					<nav>
-							
-					    
-						<ul className="nav-bar-left">
-							<li>
-								<Link
-								className="Home-Link"
-								to="/"
-								>	
-								Home
-								</Link>
-								</li>
-								<li>
-								<Link
-								className="Workouts-Link"
-								to="/workouts"
-								>
-								Workouts
-								</Link>
-                                </li>
-					    </ul>
+    getUserInfo(id) {
+        axios.get(`http://localhost:3030/users/${id}`).then(res => {
+            this.setState ({
+                user: res.data
+            })
+        })
+    }
 
-							
-					</nav>
-					
-				</div>
-			</div>
-		)
-	}
+    render() {
+        const user =  this.state.user.map((c, i) => {
+            const {username} = c
+            return (
+                <section key={i}>
+                    <div id="username">{username}</div>
+                </section>
+            )
+        })
 
+        return (
+            <section>
+                <h1>Workout Tracker</h1>
+                <div>{user}</div>
+            </section>
+        );
+    }
 }
 
+export default Header;

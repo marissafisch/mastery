@@ -1,8 +1,8 @@
-.home-container{
+ .home-container{
     width: 100vw;
     height: 100vh;
     background-size: cover;
     position: relative;
     line-height: 0;
-    background:lightblue;
-}
+    background: blue;
+} 
