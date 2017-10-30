@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!-- the doctype tag tells the browser what version of HTML the page is written in. 
+     With HTML 5 you just do <!DOCTYPE html>. There are a ton of different DTD files you can reference for things 
+     like XHTML which allow you to do use different features. -->
 <html lang="en">
 <head>
     <link rel="stylesheet" href="reset.css" />
@@ -6,33 +9,71 @@
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Some Marissa Fischbeck's favorite music">
+    <meta name="keywords" content="Music, Artists, HTML, CSS, Javascript">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="mediatype" content="screen">
+
     <title>Mastery</title>
 </head>
 <body>
-<div class="main-container">
-    <section class="header">
+    <header>
+        <h1>HEADER</h1>
+        <button onclick="welcomeFunction()">Press Button!-NOW</button>
+    </header>
+
+    <section class="list">
+    <h2> SOME OF MY FAVORITE MUSIC</h2>
     
-            <div class="nav-bar">Home</div>
-            <div class="nav-bar">Profile</div>
-            <div class="nav-bar">Logout</div>
+    
+    <div>Artists</div>
+    <ul>
+        <li>The Temper Trap</li>
+        <li>Jimmy Eat World</li>
+        <li>Death Cab For Cutie</li>
+        <li>Damien Rice</li>
+        <li>LANY: 
+            <a href="http://thisislany.com/" target="blank">Band Website</a>
+        </li>
+        <li>St. Lucia</li>
+        <li>Little Dragon</li>
+        <li>The xx</li>
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/jxKjOOR9sPU" frameborder="0" allowfullscreen></iframe>
+
     </section>
+      
+    <article class="hipster">
+        YOLO plaid mixtape farm-to-table. Tousled vexillologist chillwave before they sold out direct trade pickled aesthetic. Fashion axe literally church-key, paleo roof party truffaut raw denim pok pok meh. 
+        Vape flexitarian pop-up vinyl etsy kogi pork belly authentic whatever health goth.
         
-        <div class="middle-container">
-        <div class="hello">
-            <h1>Hello</h1>
-        </div>
-        <div class="world">
-            <h2>World</h2>
-        </div>
+        
+        <div>Funny Clip</div>
+        <audio controls>
+            <source src="/html/She turned me into a newt.mp3" type="audio/mpeg">
+        </audio>
 
-        </div>
+    <img src='/html/live_music.jpeg'  alt="Live Band" height="100" width="100"/>
         
-            
+        
 </div> 
+<footer>
+    <h4>FOOOTER</h4>
+</footer>
 
+<script>
+        function welcomeFunction() {
+            alert('WELCOME TO MY REALLY AWESOME FAVORITE MUSIC PAGE')
+        }
+    </script>
+    <script type="text/javascript"></script>
 
              
 
 </body>
 </html>
+<!-- Generally you should avoid using a custom tag as that tag may become standardized in the future. There are also better ways to define
+     an element. A semantic element is an element with a meaning.  One example would be the <header> tag. This tells you that it's contents will most likely be displayed at the very
+     top of the page, and may even contain some nav elements. These types of elements don't prevent the user from using them in places they typically shouldn't
+     be used, but it is best practice to follow the semantics of the element so that other people looking at your code will have an easier time deciphering
+     what the code is doing. -->

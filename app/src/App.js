@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import router from './router';
 import Header from './components/Header/Header';
-import { Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
-import Home from './components/Home/Home';
-import Workouts from './components/Workouts/Workouts';
 
-export default class App extends Component {
 
-  render() {
-    return (
-      <div>
-        <Switch>
-        <Route exact path ="/" component={Home} />
-        <Route path ="/header" component={Header} />
-        <Route path='/workouts' component={Workouts} />
-    </Switch>
-    <Header/>
+class App extends Component {
+
+  render(){
+    return(
+
+  <div className="App">
+        <header className="App-header">
+          <Header />
+        </header>
+        <div id="app-nav">
+          <Link to="/">Home</Link>
+          <Link to="/workouts">Workouts</Link>
+        </div>
+        {router}
       </div>
     );
   }
 }
+
+export default App;

@@ -7,8 +7,7 @@ const initialState = {
     workoutDescription: '',
     caloriesBurned: '',
     workoutList: [],
-    modalToggler: null,
-    editMode: false
+  
 }
 //ACTION NAMES//
 const UPDATE_WORKOUT_ID = "UPDATE_WORKOUT_ID";
@@ -19,8 +18,7 @@ const GET_ALL_WORKOUTS = "GET_ALL_WORKOUTS";
 const ADD_WORKOUT = "ADD_WORKOUT";
 const EDIT_WORKOUT = "EDIT_WORKOUT";
 const DELETE_WORKOUT = "DELETE_WORKOUT";
-const TOGGLE_MODAL = "TOGGLE_MODAL";
-const TOGGLE_EDIT_MENU = "TOGGLE_EDIT_MENU";
+
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -40,11 +38,6 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { workoutList: action.payload })
         case DELETE_WORKOUT + "_FULFILLED":
             return Object.assign({}, state, { workoutList: action.payload })
-        case TOGGLE_MODAL:
-            return Object.assign({}, state, { modalToggler: action.payload, workoutDate: '', workoutDescription: '', caloriesBurned: '' })
-        case TOGGLE_EDIT_MENU:
-            return Object.assign({}, state, { editMode: action.payload })
-     
         default:
             return state
     }
@@ -113,17 +106,3 @@ export function deleteWorkout(workout_id, user_id) {
         })
     }
 }
-//VIEWS//
-export function toggleModal(str) {
-        return {
-            type: TOGGLE_MODAL,
-            payload: str
-        }
-    }
-
-export function toggleEditMenu(str) {
-        return {
-            type: TOGGLE_EDIT_MENU,
-            payload: str
-        }
-    }

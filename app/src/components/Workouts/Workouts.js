@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Workouts.css';
 import { connect } from 'react-redux';
-import { getAllWorkouts, toggleModal, toggleEditMenu} from '../../ducks/reducer'
+import { getAllWorkouts} from '../../ducks/reducer'
 
 class Workouts extends Component {
 
@@ -10,11 +10,7 @@ class Workouts extends Component {
        this.props.getAllWorkouts(this.props.user.user_id)
     }
 
-    toggleAddModal(str) {
-        this.props.toggleEdit(false)
-        this.props.toggleModal(str)
-    }
-
+    
     render() {
 
         let workoutListDisplay = this.props.workoutList.map((e, i) => {
@@ -50,8 +46,7 @@ function mapStateToProps(state) {
 }
 const outputActions = {
     getAllWorkouts,
-    toggleModal,
-    toggleEditMenu,
+    
 }
 
 export default connect(mapStateToProps, outputActions)(Workouts);
