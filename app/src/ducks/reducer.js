@@ -65,6 +65,7 @@ export function getAllWorkouts() {
     return {
         type: GET_ALL_WORKOUTS,
         payload: axios.get(`http://localhost:3030/workouts/getAll`).then(response => {
+            console.log('hey', response.data)
             return response.data
         })
     }
