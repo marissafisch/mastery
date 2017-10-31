@@ -27,7 +27,7 @@ massive(process.env.CONNECTIONSTRING).then(db => {
 //WORKOUT ENDPOINTS
 app.get('/api/getAll', controller.getAllWorkouts)
 app.post('/api/add', controller.addWorkout)
-app.patch('/api/edit', controller.editWorkout)
+app.patch('/api/edit/:id', controller.editWorkout)
 app.delete('/api/delete/:id', controller.deleteWorkout)
 
 

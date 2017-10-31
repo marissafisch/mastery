@@ -1,26 +1,47 @@
 import React, { Component } from 'react';
 import './Workouts.css';
+import axios from 'axios';
 import { connect } from 'react-redux';
-import { getAllWorkouts, addWorkout, editWorkout, deleteWorkout,
-         updateWorkoutDate, updateWorkoutDescription, updateCaloriesBurned} from '../../ducks/reducer'
+import { getAllWorkouts} from '../../ducks/reducer'
 
 class Workouts extends Component {
 
-    componentDidMount() {
-       this.props.getAllWorkouts()
-       this.props.addWorkout()
+    constructor() {
+        super();
+
+        this.state = {
+            workouts: []
+        }
+    }
+
+    componentDidMount (){
+        this.props.getAllWorkouts()
+    }
+    
+
+    handleDelete(id){
+        axios.delete(`/api/delete/${id}`)
+        .then( () => this.props.getAllWorkouts())
+    }
+    
+    handleEdit(id){
+        axios.put(`/api/edit`)
+        .then( () => this.props.getAllWorkouts())
     }
 
     
     render() {
 
-        let workoutListDisplay = this.props.workoutList.map((e, i) => {
+        let mappedWorkouts= this.state.workouts.map((workouts, i) => {
+            console.log('hello',mappedWorkouts)
             return(
                 <div className="workouts-container" key={i}>
           
-                    <div className='workoutDate'>Workout Date : {e.workout_date}</div>
-                    <div className="description">Workout Description : {e.description}</div>
-                    <div className="calories">Calories Burned : {e.calories_burned}</div>
+                    <span className='workoutDate'>Workout Date : {workouts.workout_date}</span>
+                    <span className="description">Workout Description : {workouts.description}</span>
+                    <span className="calories">Calories Burned : {workouts.calories_burned}</span>
+                    <button onClick={() => this.handleEdit(workouts.id)} >EDIT</button>
+                    <button onClick={() => this.handleDelete(workouts.id)} >DELETE</button>
                 </div>
             )
         })
@@ -30,8 +51,8 @@ class Workouts extends Component {
                         <h1>View Workouts</h1>
                     </div>
                 <div className="workout-container">
-                    {workoutListDisplay}
-                    <button onClick={() => this.addWorkout('workout')} className="add_workout_button">ADD WORKOUT</button>
+                    {mappedWorkouts}
+            
                 </div>
                 
             </div>
@@ -42,15 +63,6 @@ class Workouts extends Component {
 function mapStateToProps(state) {
     return state
 }
-const outputActions = {
-   getAllWorkouts, 
-   addWorkout, 
-   editWorkout, 
-   deleteWorkout,
-   updateWorkoutDate, 
-   updateWorkoutDescription, 
-   updateCaloriesBurned
-    
-}
 
-export default connect(mapStateToProps, outputActions)(Workouts);
+
+export default connect(mapStateToProps,{getAllWorkouts})(Workouts);

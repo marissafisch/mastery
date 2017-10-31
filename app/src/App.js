@@ -18,7 +18,6 @@ class App extends Component {
           <Link to="/">Home</Link>
           <Link to="/workouts">Workouts</Link>
           <Link to="/functional_view">Functional View</Link>
-          <Link to="/list">List</Link>
         </div>
         {router}
       </div>

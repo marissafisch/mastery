@@ -25,7 +25,7 @@ module.exports = {
     deleteWorkout: (req, res, next) => {
         const dbInstance = req.app.get('db');
         req.app.get('db').deleteWorkout(req.params.id)
-            .then(workouts => res.status(200).send(workouts))
+            .then(response => res.status(200).send(response))
             .catch(err => res.status(500).send(console.log(err)))            
     }
 }
