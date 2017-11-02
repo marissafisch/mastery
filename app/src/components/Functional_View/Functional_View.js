@@ -7,7 +7,7 @@ export default function (props) {
         <section className="App">
             <h1>Functional Component View</h1>
             <Link to="/"><button>Home</button></Link>
-            <Link to="/workouts">Workouts</Link>
+            <Link to="/functional_view/nested">Nested</Link>
             <button>Hello</button>
             {props.children}
         </section>

@@ -1,34 +1,15 @@
 import React, { Component } from 'react';
-import * as products from '../../services/products';
+import { Link } from 'react-router-dom';
 
-class Stuff extends Component{
-    constructor(props){
-        super(props)
 
-        this.state = {
-            product: {}
-        }
+export default class Stuff extends Component {
+    render() {
+        return (
+            <section>
+                <div>PARAM VIEW</div>
+                <h1>{this.props.match.params.name}</h1>
+                
+            </section>
+        );
     }
-
-componentDidMount(){
-    products.get(this.props.match.params.id)
-    .then(product => this.setState({product}))
 }
-
-render(){
-    const {product} = this.state;
-    return (
-        <div>
-            
-            <img className="product__image" src={product.image} alt={product.title} />
-            <h1>{product.title}</h1>
-            
-           </div>
-    )
-}
-
-
-
-}
-
-export default Stuff;
