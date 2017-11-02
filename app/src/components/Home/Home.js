@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Home.css';
+import '../Nested_View/Nested_View';
 
 
 export default class Home extends Component {
@@ -12,8 +13,8 @@ export default class Home extends Component {
                 <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknAAs5tVc-h-CKDE8HRhXRXmd4a8Zxknj5Omh7mpJMiEXcflv'
                 alt=''/>
                 
+           
                 </div>
-            
             </div>
               
 
