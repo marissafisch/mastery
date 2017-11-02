@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Functional_View from '../Functional_View/Functional_View'
 
 
 export default class Stuff extends Component {
@@ -12,7 +13,7 @@ export default class Stuff extends Component {
                     <li>Hello</li>
                     <li>How Are You</li>
                 </ul>
-                
+               <Functional_View/>
             </section>
         );
     }
