@@ -22,10 +22,10 @@ export default function reducer(state = initialState, action) {
 
 
 //WORKOUTS//
-export function getAllWorkouts(workoutList) {
+export function getAllWorkouts() {
     return {
         type: GET_ALL_WORKOUTS,
-        payload: axios.get('/api/getAll').then(response => {
+        payload: axios.get("http://localhost:3030/api/getAllWorkouts").then(response => {
             console.log('hey', response.data)
             return response.data
         })

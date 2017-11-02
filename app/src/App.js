@@ -17,6 +17,7 @@ class App extends Component {
         <div id="app-nav">
           <Link to="/">Home</Link>
           <Link to="/workouts">Workouts</Link>
+          <Link to="/stuff">Stuff</Link>
           <Link to="/functional_view">Functional View</Link>
         </div>
         {router}

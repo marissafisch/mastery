@@ -10,8 +10,11 @@ class Workouts extends Component {
         super();
 
         this.state = {
-            workouts: []
+            workouts: [],
+            newWorkout: '',
         }
+        this.addWorkout = this.addWorkout.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     componentDidMount (){
@@ -19,21 +22,35 @@ class Workouts extends Component {
     }
     
 
+    addWorkout(item) {
+		this.setState({
+			workouts: [...this.state.workouts, item],
+			newWorkout: ''
+        })
+        console.log(this.state.workouts)
+    }
+
+    handleChange(value) {
+		this.setState({
+			newWorkout: value
+		})
+	}
+
     handleDelete(id){
-        axios.delete(`/api/delete/${id}`)
+        axios.delete(`http://localhost:3030/api/deleteWorkout/${id}`)
         .then( () => this.props.getAllWorkouts())
     }
     
     handleEdit(id){
-        axios.put(`/api/edit`)
+        axios.put(`http://localhost:3030/api/editWorkout/${id}`)
         .then( () => this.props.getAllWorkouts())
     }
 
     
     render() {
 
-        let mappedWorkouts= this.state.workouts.map((workouts, i) => {
-            console.log('hello',mappedWorkouts)
+        let mappedWorkouts= this.props.workoutList.map((workouts, i) => {
+            
             return(
                 <div className="workouts-container" key={i}>
           
@@ -45,6 +62,18 @@ class Workouts extends Component {
                 </div>
             )
         })
+
+        var list = this.state.workouts.map((e, i) => {
+			return (
+				<div className="workouts-display">
+					<div className="workouts">
+						<span>{e}</span>
+
+					</div>
+					
+				</div>
+			)
+		})
         return (
             <div className="workout_viewer">
                 <div className="view-workouts">
@@ -57,6 +86,20 @@ class Workouts extends Component {
                 
             </div>
         );
+
+        <div className="workouts-invite-container">
+					<p>Add Workout</p>
+					
+
+					<input value={this.state.newWorkout} onChange={(e) => this.handleChange(e.target.value)} />
+
+						<button className="add-workout" onClick={() => this.addWorkout(this.state.newWorkout)}> Add Workout</button>
+
+					
+					<div>
+						{list}
+					</div>
+        </div>
     }
 }
 
